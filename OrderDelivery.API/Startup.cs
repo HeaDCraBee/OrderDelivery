@@ -31,6 +31,10 @@ namespace OrderDelivery.API
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseHsts();
+            }
 
 
             app.UseHttpsRedirection();
