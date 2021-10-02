@@ -1,0 +1,77 @@
+﻿@page
+@model OrdersList.IndexModel
+@{
+    ViewData["Title"] = "Orders List";
+}
+
+<div class="container row p-o n-0">
+    <div class="col-9">
+        <h2 class="text-info">Orders List</h2>
+    </div>
+    <div class="col-3">
+        <a asp-page="/CreateOrder/Index" class="btn btn-success form-control">Создать заказ</a>
+    </div>
+</div>
+<div class="col-12 border p-3 mt-3">
+    <form method="post">
+        @if (Model.Orders.Count() > 0)
+        {
+            <table class="table table-stripted border">
+                <tr class="table-secondary">
+                    <th>
+                        <label asp-for="Orders.FirstOrDefault().Id">Номер заказа</label>
+                    </th>
+                    <th>
+                        <label asp-for="Orders.FirstOrDefault().SenderCity">Город отправителя</label>
+                    </th>
+                    <th>
+                        <label asp-for="Orders.FirstOrDefault().SenderAddress">Адрес отправителя</label>
+                    </th>
+                    <th>
+                        <label asp-for="Orders.FirstOrDefault().ReceiverCity">Город получателя</label>
+                    </th>
+                    <th>
+                        <label asp-for="Orders.FirstOrDefault().ReceiverAddress">Адрес получателя</label>
+                    </th>
+                    <th>
+                        <label asp-for="Orders.FirstOrDefault().CargoWeight">Вес груза</label>
+                    </th>
+                    <th>
+                        <label asp-for="Orders.FirstOrDefault().PickUpDate">Дата забора груза</label>
+                    </th>
+                </tr>
+                @foreach (var order in Model.Orders)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => order.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => order.SenderCity)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => order.SenderAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => order.ReceiverCity)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => order.ReceiverAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => order.CargoWeight)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => order.PickUpDate)
+                </td>
+            </tr>
+                }
+            </table>
+
+        }
+        else
+        {
+            <p>No orders available.</p>
+        }
+    </form>
+</div>
