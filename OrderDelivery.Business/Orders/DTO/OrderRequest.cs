@@ -51,7 +51,7 @@ namespace OrderDelivery.Business.Orders.DTO
                 if (!DateTime.TryParse(value, out dt))
                     throw new ArgumentException("Incorrect Date");
 
-                if (dt < DateTime.Now)
+                if (dt.Date < DateTime.Today)
                     throw new ArgumentException("Incorrect Date");
 
                 _pickUpDate = value;
